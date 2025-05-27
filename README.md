@@ -1,3 +1,12 @@
+<link rel="stylesheet" href="style.css">
+
+<div id="game-container">
+    <canvas id="gameOfLifeCanvas"></canvas>
+</div>
+
+<script src="game_of_life.js"></script>
+
+<div class="readme-content">
 ## Hi there 👋
 I’m Sahil Tomar — AI/ML dev, system thinker, and builder of multi-agent chaos (the good kind).
 
@@ -19,3 +28,4 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+</div>
