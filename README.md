@@ -1,6 +1,4 @@
 
-![Code Error Sticker by REC](https://github.com/user-attachments/assets/db5a74b0-5ae9-4e2f-8a7d-2a685ed40b12)
-
 
 ## Hi there 👋
 I’m Sahil Tomar — AI/ML dev, system thinker, and builder of multi-agent chaos (the good kind).
