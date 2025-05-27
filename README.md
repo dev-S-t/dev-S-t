@@ -1,10 +1,6 @@
-<link rel="stylesheet" href="style.css">
-
-<div id="game-container">
-    <canvas id="gameOfLifeCanvas"></canvas>
+<div style="width: 90vw; height: 10vh; margin: 20px auto; border-radius: 15px; overflow: hidden; border: 1px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <iframe src="./gol.html" style="width: 100%; height: 100%; border: none;"></iframe>
 </div>
-
-<script src="game_of_life.js"></script>
 
 <div class="readme-content">
 ## Hi there 👋

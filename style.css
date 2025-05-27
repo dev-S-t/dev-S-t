@@ -5,14 +5,12 @@ body {
 }
 
 #game-container {
-    width: 90vw;
-    height: 10vh;
-    margin: 20px auto; /* 20px top/bottom margin, auto for horizontal centering */
-    border: 1px solid #ddd; /* A light border to see the container */
-    border-radius: 15px; /* Rounded corners */
-    overflow: hidden; /* Ensures the canvas respects the border-radius */
-    position: relative; /* Needed for potential absolute positioning of internal elements, though not used by canvas directly here */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for a bit of depth */
+    /* Styles for the container within gol.html */
+    /* It's already styled inline in gol.html to be 100vw/100vh, margin 0, border none, radius 0, shadow none */
+    /* We can keep overflow: hidden and position: relative if they are beneficial for the canvas behavior */
+    overflow: hidden;
+    position: relative;
+    /* The background for the game area itself is on the canvas or its direct parent */
 }
 
 #gameOfLifeCanvas {
