@@ -1,4 +1,4 @@
-[pixels-neon](https://github.com/user-attachments/assets/49dc024b-fcca-4c83-81df-0ecb200cf960)
+![pixels-neon](https://github.com/user-attachments/assets/a63f81a3-674b-47c3-a8a2-5d180153a4ec)
 
 ## Hi! there 👋
 I’m Sahil Tomar — AI/ML dev, system thinker, and builder of multi-agent chaos (the good kind).
