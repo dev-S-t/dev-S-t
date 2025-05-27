@@ -1,5 +1,5 @@
 
-![Uploading Code Error Sticker by REC.gif…]()
+![Code Error Sticker by REC](https://github.com/user-attachments/assets/db5a74b0-5ae9-4e2f-8a7d-2a685ed40b12)
 
 
 ## Hi there 👋
