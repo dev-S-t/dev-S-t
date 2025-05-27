@@ -1,4 +1,5 @@
 
+![dgdq8br-09cc7ad6-a021-47a5-b0e0-917b12b0f7a7](https://github.com/user-attachments/assets/ea5d948e-bda9-4f8d-841c-58e2604c4f39)
 
 ## Hi there 👋
 I’m Sahil Tomar — AI/ML dev, system thinker, and builder of multi-agent chaos (the good kind).
