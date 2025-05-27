@@ -1,8 +1,7 @@
-[<div style="width: 90vw; height: 10vh; margin: 20px auto; border-radius: 15px; overflow: hidden; border: 1px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    <iframe src="./gol.html" style="width: 100%; height: 100%; border: none;"></iframe>
-</div>
 
-<div class="readme-content">](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWF0aWZqOTJ2d2RpNXF1OXU4ZmNpeGpraHZkcW4yeTRqY2N6cng0YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/PWlsJVm3mhwQhD7imf/giphy.gif)
+![Uploading Code Error Sticker by REC.gif…]()
+
+
 ## Hi there 👋
 I’m Sahil Tomar — AI/ML dev, system thinker, and builder of multi-agent chaos (the good kind).
 
