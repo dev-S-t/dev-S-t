@@ -53,9 +53,7 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-```
 
-```markdown name=v13_svg_badge.md
 <img 
   src="https://github.com/user-attachments/assets/a63f81a3-674b-47c3-a8a2-5d180153a4ec" 
   alt="pixels-neon background"
@@ -87,23 +85,21 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-```
 
-```markdown name=v14_ascii_art.md
 <img 
   src="https://github.com/user-attachments/assets/a63f81a3-674b-47c3-a8a2-5d180153a4ec" 
   alt="pixels-neon background"
   width="100%"
 />
 
-```
+
  _    _ _   _   _   _                    _ 
 | |  | (_) | | | | | |                  | |
 | |__| |_  | |_| |_| |__   ___ _ __ ___| |
 |  __  | | | __| __| '_ \ / _ \ '__/ _ \ |
 | |  | | | | |_| |_| | | |  __/ | |  __/_|
 |_|  |_|_|  \__|\__|_| |_|\___|_|  \___(_)
-```
+
 
 I'm **Sahil Tomar** — AI/ML dev, system thinker, and builder of multi-agent chaos (the good kind).
 
@@ -126,9 +122,7 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-```
 
-```markdown name=v15_emoji_timeline.md
 <img 
   src="https://github.com/user-attachments/assets/a63f81a3-674b-47c3-a8a2-5d180153a4ec" 
   alt="pixels-neon background"
@@ -144,11 +138,11 @@ Here are some ideas to get you started:
 
 <h3>My Tech Journey 🚀</h3>
 
-```txt
+
 📆 Current  | Working with LLMs, RAG stacks, and Google's ADK 
 📆 Always   | Prototyping fast, failing smart, shipping clean
 📆 Mission  | Building scalable pipelines, agents, and APIs
-```
+
 
 <!--
 **dev-S-t/dev-S-t** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
@@ -164,9 +158,9 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-```
 
-```markdown name=v16_text_art_banner.md
+
+
 <img 
   src="https://github.com/user-attachments/assets/a63f81a3-674b-47c3-a8a2-5d180153a4ec" 
   alt="pixels-neon background"
@@ -206,6 +200,6 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-```
+
 
 Each file above is complete and self-contained, including both the image and all text elements in a single code block.
