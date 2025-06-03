@@ -1,37 +1,30 @@
-<div align="center"><img 
+<img 
   src="https://github.com/user-attachments/assets/a63f81a3-674b-47c3-a8a2-5d180153a4ec" 
   alt="pixels-neon background"
-  width=100vw
+  width="100%"
 />
 
-<h1 align="center">𝙷𝚒! 𝚝𝚑𝚎𝚛𝚎 <img src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif" width="30px"> 𝙸'𝚖 𝚂𝚊𝚑𝚒𝚕</h1>
-
-
-  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20professions/Man%20Technologist%20Medium-Light%20Skin%20Tone.png" width="70" height="70" alt="Developer"/>
-  <p>AI/ML dev, system thinker, and builder of multi-agent chaos (the good kind).</p>
-
-
-<h3><b>My Tech Journey 🚀</b></h3>
-
-
-📆 Current  | Working with LLMs, RAG stacks, and Google's ADK <br>
-📆 Always   | Prototyping fast, failing smart, shipping clean <br>
-📆 Mission  | Building scalable pipelines, agents, and APIs <br>
+<div align="center">
+  <h1>
+    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand.png" alt="Waving Hand" width="55" height="55" style="vertical-align:middle; margin-right:-10px;"/><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Press+Start+2P&size=20&duration=4000&pause=500&color=F749F7&vCenter=true&width=470&height=60&lines=Hi+there!;I'm+Sahil+Tomar" alt="Typing SVG" style="vertical-align:middle;" /></a>
+  </h1>
 </div>
 
-<!--
-**dev-S-t/dev-S-t** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<div align="center" style="margin-bottom: 20px;">
+  <h3 style="color: #b967ff;">AI/ML dev, system thinker, and builder of multi-agent chaos (the good kind).</h3>
+</div>
 
-Here are some ideas to get you started:
+<div style="background-color: #2d0a42; padding: 15px; border-radius: 8px; margin: 20px 0;">
+  <span style="color: #bf7af0;">🧠</span> Currently working with LLMs, RAG stacks, and Google's ADK to make AI more real-time, modular, and useful.
 
-- 🔭 I'm currently working on ...
-- 🌱 I'm currently learning ...
-- 👯 I'm looking to collaborate on ...
-- 🤔 I'm looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+  <span style="color: #bf7af0;">⚙️</span> I prototype fast, fail smart, and ship cleaner than my browser history.  
+  <span style="color: #bf7af0;">📦</span> Whether it's pipelines, agents, or APIs — if it scales, I'm in.
+</div>
 
-
+```diff
+! const sahilSkills = {
++   ai: ['LLMs', 'RAG', 'Google ADK'],
+#   building: 'multi-agent systems',
++   approach: 'prototype fast, fail smart',
+@   mission: 'making AI more useful'
+! };
