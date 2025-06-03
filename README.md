@@ -12,12 +12,12 @@
   <p>AI/ML dev, system thinker, and builder of multi-agent chaos (the good kind).</p>
 
 
-<h3>My Tech Journey 🚀</h3>
+<h3><b>My Tech Journey 🚀</b></h3>
 
 
-📆 Current  | Working with LLMs, RAG stacks, and Google's ADK 
-📆 Always   | Prototyping fast, failing smart, shipping clean
-📆 Mission  | Building scalable pipelines, agents, and APIs
+📆 Current  | Working with LLMs, RAG stacks, and Google's ADK <br>
+📆 Always   | Prototyping fast, failing smart, shipping clean <br>
+📆 Mission  | Building scalable pipelines, agents, and APIs <br>
 </div>
 
 <!--
