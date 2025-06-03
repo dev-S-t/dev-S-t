@@ -1,5 +1,9 @@
 <div align="center">
-<img src="YOUR_IMAGE_URL_HERE" style="position:fixed; top:0; left:0; width:100vw; height:auto; z-index:-1;" />
+  <img 
+    src="https://github.com/user-attachments/assets/a63f81a3-674b-47c3-a8a2-5d180153a4ec" 
+    alt="pixels-neon" 
+    style="display: block; margin: 0 auto; width: 100vw; min-width: 100vw; max-width: 100vw; object-fit: cover;"
+  >
 </div>
 
 
