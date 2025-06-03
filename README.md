@@ -3,7 +3,6 @@
   src="https://github.com/user-attachments/assets/a63f81a3-674b-47c3-a8a2-5d180153a4ec" 
   alt="pixels-neon background"
   width=100vw
-  max height=50vh
 />
 
 <h1 align="center">𝙷𝚒! 𝚝𝚑𝚎𝚛𝚎 <img src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif" width="30px"> 𝙸'𝚖 𝚂𝚊𝚑𝚒𝚕</h1>
