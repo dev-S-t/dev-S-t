@@ -1,0 +1,12 @@
+{
+  "name": "dev-s-t-profile",
+  "private": true,
+  "description": "Builds the images for the github.com/dev-S-t profile README in the look of human-in-loop.dev",
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "activity": "node scripts/build.cjs activity"
+  },
+  "devDependencies": {
+    "opentype.js": "^1.3.4"
+  }
+}

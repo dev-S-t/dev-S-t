@@ -1,30 +1,20 @@
-<img 
-  src="https://github.com/user-attachments/assets/a63f81a3-674b-47c3-a8a2-5d180153a4ec" 
-  alt="pixels-neon background"
-  width="100%"
-/>
+<a href="https://human-in-loop.dev"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/hero-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/hero-light.svg" width="100%" alt="Sahil Tomar (dev-S-t), AI Solutions Engineer. The name is drawn by the lines of a spiral tunnel, and a stick figure stands on a cliff edge."></picture></a>
 
-<div align="center">
-  <h1>
-    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand.png" alt="Waving Hand" width="55" height="55" style="vertical-align:middle; margin-right:-10px;"/><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Press+Start+2P&size=20&duration=4000&pause=500&color=F749F7&vCenter=true&width=470&height=60&lines=Hi+there!;I'm+Sahil+Tomar" alt="Typing SVG" style="vertical-align:middle;" /></a>
-  </h1>
-</div>
+<a href="https://human-in-loop.dev/skills/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/skills-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/skills-light.svg" width="100%" alt="Skills: Python, Go, JavaScript, Next.js, FastAPI, LiveKit, WebRTC, Gemini, Google ADK, LangGraph, MCP, Qdrant, Redis, Google Cloud, Docker, GitHub Actions, Git, Nginx, DigitalOcean, Playwright."></picture></a>
 
-<div align="center" style="margin-bottom: 20px;">
-  <h3 style="color: #b967ff;">AI/ML dev, system thinker, and builder of multi-agent chaos (the good kind).</h3>
-</div>
+<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/activity-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/activity-light.svg" width="100%" alt="Contributions in the last year, drawn as a contour map where each day with contributions raises a hill."></picture>
 
-<div style="background-color: #2d0a42; padding: 15px; border-radius: 8px; margin: 20px 0;">
-  <span style="color: #bf7af0;">🧠</span> Currently working with LLMs, RAG stacks, and Google's ADK to make AI more real-time, modular, and useful.
+<a href="https://human-in-loop.dev/case-studies/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/cases-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/cases-light.svg" width="100%" alt="Case Studies"></picture></a><br>
+<a href="https://human-in-loop.dev/case-studies/on-prem-privacy-rag/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-1-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-1-light.svg" width="100%" alt="Case Study 1: Data That Can't Leave the Building (Privacy-First On-Prem RAG over A2A protocol)"></picture></a><br>
+<a href="https://human-in-loop.dev/case-studies/multi-tenant-isolation/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-2-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-2-light.svg" width="100%" alt="Case Study 2: Multi-Tenant AI Without Cross-Contamination (AnyAssist on Google ADK &amp; LiteLLM)"></picture></a><br>
+<a href="https://human-in-loop.dev/case-studies/manual-dispatch-automation/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-3-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-3-light.svg" width="100%" alt="Case Study 3: 30 Minutes to Under a Minute — Automating a Manual Dispatch Desk (Dubai Luxury Transport Client)"></picture></a><br>
+<a href="https://human-in-loop.dev/case-studies/message-filtering/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-4-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-4-light.svg" width="100%" alt="Case Study 4: Filtering Signal From a Thousand Messages a Day (Independent Musician Community Gateway)"></picture></a><br>
+<a href="https://human-in-loop.dev/case-studies/avatar-product-rescue/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-5-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-5-light.svg" width="100%" alt="Case Study 5: Unblocking a Real-Time Avatar Product After Months Stuck (Hireups / MGS Technology via Quantashift)"></picture></a><br>
+<a href="https://human-in-loop.dev/case-studies/one-platform-two-goals/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-6-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-6-light.svg" width="100%" alt="Case Study 6: One Voice Platform, Two Opposite Conversational Goals (VOAG Multi-Provider &amp; Regional Workers)"></picture></a><br>
+<a href="https://human-in-loop.dev/case-studies/brand-content-without-a-manager/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-7-dark.svg"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/case-7-light.svg" width="100%" alt="Case Study 7: Consistent Brand Content Without a Social Media Manager (MAGe Multi-Agent Ad Engine)"></picture></a>
 
-  <span style="color: #bf7af0;">⚙️</span> I prototype fast, fail smart, and ship cleaner than my browser history.  
-  <span style="color: #bf7af0;">📦</span> Whether it's pipelines, agents, or APIs — if it scales, I'm in.
-</div>
+<a href="https://human-in-loop.dev/contact/"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/contact.svg" width="100%" alt="Contact. A night sea with a moon setting on the horizon and the address human-in-loop.dev written as a barcode."></a>
 
-```diff
-! const sahilSkills = {
-+   ai: ['LLMs', 'RAG', 'Google ADK'],
-#   building: 'multi-agent systems',
-+   approach: 'prototype fast, fail smart',
-@   mission: 'making AI more useful'
-! };
+<a href="https://www.linkedin.com/in/dev-s-t/"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/pill-linkedin.svg" width="268" alt="LinkedIn: dev-s-t"></a>
+<a href="https://wa.link/r8csgy"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/pill-whatsapp.svg" width="268" alt="Primary WhatsApp: wa.link/r8csgy"></a>
+<a href="https://orcid.org/0009-0005-9222-9121"><img src="https://raw.githubusercontent.com/dev-S-t/dev-S-t/main/assets/pill-orcid.svg" width="268" alt="ORCID: 0009-0005-9222-9121"></a>
