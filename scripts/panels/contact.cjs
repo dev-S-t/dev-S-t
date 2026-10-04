@@ -4,7 +4,7 @@
 // image so each can link.
 const F = require('../lib/fonts.cjs'), N = require('../lib/noise.cjs'), S = require('../lib/svg.cjs'), IC = require('../lib/icons.cjs');
 
-const W = 900, SH = 330, OY = 30, H = SH + OY, HZ = 196;   // SH: the night scene; OY: the wave seam above it
+const W = 900, SH = 330, OY = S.TEAR, H = SH + OY, HZ = 196;   // SH: the night scene; OY: the tear above it
 const MOON = { x: 58, y: 134, r: 60 };
 const { PAPER, INK } = S;
 
@@ -78,10 +78,8 @@ function scene(mode) {
     `<g fill="none" stroke="${PAPER}" stroke-linecap="round">${water}${glint}</g>` +
     `<rect x="${plate.x}" y="${plate.y}" width="${plate.w.toFixed(1)}" height="${plate.h}" rx="22" fill="${INK}"/>` +
     `<defs>${T.defs()}</defs><g fill="${PAPER}">${label}${heading}</g>`;
-  // the wave: the ground of the section above (paper or ink by theme) ends in a wave over the night
-  const ground = S.theme(mode).bg, wave = []; for (let x = 0; x <= W; x += 4) wave.push([x, 16 + 6 * Math.sin(x / 62 + 0.8) + 3 * N.sn(x / 29, 5.5)]);
-  const shore = 'M' + wave.map(([x, y]) => x + ' ' + y.toFixed(1)).join('L');
-  const seam = `<path d="M0 0L${shore.slice(1)}L${W} 0Z" fill="${ground}"/>` + (mode === 'dark' ? `<path d="${shore}" fill="none" stroke="${PAPER}" stroke-width="1.2"/>` : '');
+  // the tear from the case studies: in the colour of the lines (ink by day, so it melts into the night; paper by night)
+  const seam = S.tearIn(W, 14, S.theme(mode).fg, 7.7);
   return S.panel({ w: W, h: H, bg: INK, title: 'Contact', style: css, corners: 'bottom',
     desc: 'A night sea: a moon with rings setting on the horizon, stars, and the address human-in-loop.dev written as a barcode with its reflection in the water. Links to human-in-loop.dev/contact/.', body: `<g transform="translate(0 ${OY})">${body}</g>` + seam });
 }

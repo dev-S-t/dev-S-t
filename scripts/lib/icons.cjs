@@ -59,15 +59,23 @@ function bbox(d) {
   return { x: b[0], y: b[1], w: b[2] - b[0], h: b[3] - b[1] };
 }
 
-// one mark at (cx, cy), fitted into a box maxW x maxH; lines every `sp` px, drawn at 86% of that (as the site does)
+// one mark at (cx, cy), fitted into a box maxW x maxH; lines every `sp` px, drawn at 86% of that (as the site does).
+// With `ripple` (a delay in seconds) each line is its own element with class "rp", so a wave can run down the mark
+// line by line, the site's hover effect; the panel's CSS says how the wave moves.
 let uid = 0;
-function mark(ic, cx, cy, maxW, maxH, fg, lines = 15) {
+function mark(ic, cx, cy, maxW, maxH, fg, lines = 15, ripple = null) {
   const { d, box } = ic, k = Math.min(maxW / box.w, maxH / box.h), w = box.w * k, h = box.h * k;
   const x0 = cx - w / 2, y0 = cy - h / 2, sp = h / lines, id = 'm' + (++uid);
-  let st = '';
-  for (let y = sp / 2; y < h; y += sp) st += `M${(x0 - 1).toFixed(1)} ${(y0 + y).toFixed(2)}h${(w + 2).toFixed(1)}`;
-  return `<clipPath id="${id}"><path transform="translate(${(x0 - box.x * k).toFixed(2)} ${(y0 - box.y * k).toFixed(2)}) scale(${k.toFixed(4)})" d="${d}"/></clipPath>` +
-    `<path clip-path="url(#${id})" d="${st}" stroke="${fg}" stroke-width="${(sp * 0.86).toFixed(2)}" fill="none"/>`;
+  const clip = `<clipPath id="${id}"><path transform="translate(${(x0 - box.x * k).toFixed(2)} ${(y0 - box.y * k).toFixed(2)}) scale(${k.toFixed(4)})" d="${d}"/></clipPath>`;
+  const sw = (sp * 0.86).toFixed(2);
+  if (ripple === null) {
+    let st = '';
+    for (let y = sp / 2; y < h; y += sp) st += `M${(x0 - 1).toFixed(1)} ${(y0 + y).toFixed(2)}h${(w + 2).toFixed(1)}`;
+    return clip + `<path clip-path="url(#${id})" d="${st}" stroke="${fg}" stroke-width="${sw}" fill="none"/>`;
+  }
+  let out = '', i = 0;
+  for (let y = sp / 2; y < h; y += sp, i++) out += `<g class="rp" style="animation-delay:${(ripple + i * 0.045).toFixed(3)}s"><path clip-path="url(#${id})" d="M${(x0 - 3).toFixed(1)} ${(y0 + y).toFixed(2)}h${(w + 6).toFixed(1)}"/></g>`;
+  return clip + `<g stroke="${fg}" stroke-width="${sw}" fill="none">${out}</g>`;
 }
 
 module.exports = { load, mark, bbox };

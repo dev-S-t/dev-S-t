@@ -3,7 +3,9 @@
 const F = require('../lib/fonts.cjs'), N = require('../lib/noise.cjs'), S = require('../lib/svg.cjs');
 const TR = require('../lib/terrain.cjs'), IC = require('../lib/icons.cjs');
 
-const W = 900, OY = 28, H = 360 + OY;   // OY: room at the top for the hero's rock to end in
+const W = 900, OY = 28, H = 360 + OY + S.TEAR;   // OY: room at the top for the hero's rock to end in; TEAR: the tear into Activity
+// motion: a wave runs down each mark line by line (the site's hover effect), one mark after another
+const CSS = '.rp{animation:rip 12s ease-in-out infinite}@keyframes rip{0%,84%,100%{transform:translateX(0)}88%{transform:translateX(1.7px)}92%{transform:translateX(-1.7px)}96%{transform:translateX(.6px)}}' + S.CALM;
 // slug on the site (Simple Icons) -> label
 const TOOLS = [
   ['python', 'Python'], ['go', 'Go'], ['javascript', 'JavaScript'], ['nextdotjs', 'Next.js'], ['fastapi', 'FastAPI'],
@@ -32,14 +34,14 @@ async function files() {
   const build = (mode) => {
     const { bg, fg } = S.theme(mode);
     const lines = TR.draw({ w: W, h: H, f: field, peaks, step: 0.085, width, cell: 4.5 });
-    const marks = spots.map((p) => IC.mark(p.icon, p.x, p.y - 8, 54, 40, fg)).join('');
+    const marks = spots.map((p, i) => IC.mark(p.icon, p.x, p.y - 8, 54, 40, fg, 15, i * 0.5)).join('');
     const T = F.glyphs();
     const labels = spots.map((p) => T.use('data', p.tool[1], p.x, p.y + 30, 12, { anchor: 'middle', ls: 0.02 })).join('');
     const body = `<g fill="none" stroke="${fg}" stroke-linecap="round" stroke-linejoin="round">${lines}</g>` + `<path d="${rock}" fill="${fg}"/>` +
       `<rect x="${head.x}" y="${head.y}" width="${head.w}" height="${head.h}" rx="${head.r}" fill="${bg}"/>` +
       `<path fill="${fg}" d="${F.text('head', 'Skills', head.x + 28, head.y + 66, 60, { ls: -0.012 })}"/>` +
-      marks + `<defs>${T.defs()}</defs><g fill="${fg}">${labels}</g>`;
-    return S.panel({ w: W, h: H, bg, title: 'Skills', desc: 'Marks of the tools Sahil Tomar works with, drawn in lines on a contour map: ' + TOOLS.map((t) => t[1]).join(', ') + '.', body });
+      marks + `<defs>${T.defs()}</defs><g fill="${fg}">${labels}</g>` + S.tearOut(W, H, 16, fg, 11.3);
+    return S.panel({ w: W, h: H, bg, style: CSS, title: 'Skills', desc: 'Marks of the tools Sahil Tomar works with, drawn in lines on a contour map: ' + TOOLS.map((t) => t[1]).join(', ') + '.', body });
   };
   return { 'skills-light': build('light'), 'skills-dark': build('dark') };
 }

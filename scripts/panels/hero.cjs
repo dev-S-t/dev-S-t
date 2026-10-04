@@ -11,6 +11,9 @@ const HS = H / s;                  // the hero's height in site px
 const C = [W * 0.36, H * 0.4];     // the tunnel's centre (the site's 0.36, 0.4)
 const T = 7.3;                     // a moment in the site's slowly changing noise
 const PAD = 40;                    // the page margin
+// motion: the whole spiral sways a degree either way about the tunnel's centre; the letters stay, the lines slide
+const CSS = `.sway{transform-origin:${W * 0.36}px ${H * 0.4}px;animation:sway 24s ease-in-out infinite alternate}@keyframes sway{from{transform:rotate(-1.2deg)}to{transform:rotate(1.2deg)}}` + S.CALM;
+const KEEP = 20;                   // spiral drawn this far past the edges, so the sway never shows an end
 const TIP = 0.5, TOP = 0.7;        // where the cliff's face is (share of the width) and its top (share of the height)
 
 const noiseAt = (x, y) => N.fbm(x / s / 460, y / s / 460, T * 0.03);
@@ -31,7 +34,7 @@ function nameLayout() {
     size, s2,
     n1: F.text('name', 'Sahil', PAD, y1, size, { ls }) + F.text('name', 'Tomar', PAD, y2, size, { ls }),
     n2: F.text('name', '(dev-S-t)', x2, y1, s2, { ls: 0.01 }),
-    box: [PAD - 6, y1 - size * 0.8, rightEdge + 6, y2 + size * 0.06]
+    box: [PAD - 18, y1 - size * 0.8 - 12, rightEdge + 18, y2 + size * 0.06 + 12]
   };
 }
 
@@ -57,7 +60,7 @@ function spiral(box) {
 function byWidth(pts, idx, step, keep) {
   const groups = new Map(); let cur = null, curW = -1;
   for (const p of pts) {
-    const inside = keep(p) && p[0] > -8 && p[0] < W + 8 && p[1] > -8 && p[1] < H + 8;
+    const inside = keep(p) && p[0] > -KEEP && p[0] < W + KEEP && p[1] > -KEEP && p[1] < H + KEEP;
     if (!inside) { cur = null; curW = -1; continue; }
     const w = Math.max(step, Math.round(p[idx] / step) * step);
     if (w !== curW) { if (cur) cur.push([p[0], p[1]]); cur = [[p[0], p[1]]]; curW = w; if (!groups.has(w)) groups.set(w, []); groups.get(w).push(cur); }
@@ -123,14 +126,14 @@ function build(mode) {
   const ident = `<g fill="${bg}">${T.use('data', 'Title:', tx, ty + 12, 12.5, { ls: 0.02 })}${T.use('title', 'AI Solutions Engineer', tx, ty + 44, 27)}</g>`;
 
   const body =
-    `<g fill="none" stroke="${fg}" stroke-linecap="round" stroke-linejoin="round">${lines(thin)}</g>` +
+    `<g class="sway" fill="none" stroke="${fg}" stroke-linecap="round" stroke-linejoin="round">${lines(thin)}</g>` +
     `<mask id="nm" maskUnits="userSpaceOnUse" x="0" y="0" width="${W}" height="${H}"><path d="${nm.n1}" fill="#fff" stroke="#fff" stroke-width="${(nm.size * 0.022).toFixed(2)}" stroke-linejoin="round"/></mask>` +
-    `<g mask="url(#nm)" fill="none" stroke="${fg}" stroke-linecap="butt">${lines(thick)}</g>` +
+    `<g mask="url(#nm)"><g class="sway" fill="none" stroke="${fg}" stroke-linecap="butt">${lines(thick)}</g></g>` +
     `<path d="${nm.n2}" fill="${bg}" stroke="${fg}" stroke-width="1.1" stroke-linejoin="round"/>` +
     `<path d="${cliff}" fill="${fg}"/>` + figure(fx, fy, fsize, fg) + `<defs>${T.defs()}</defs>` + ident +
     lockup(PAD, 30, 30, fg, bg);
   return S.panel({
-    w: W, h: H, bg, corners: 'top',
+    w: W, h: H, bg, corners: 'top', style: CSS,
     title: 'Sahil Tomar (dev-S-t), AI Solutions Engineer',
     desc: 'The name Sahil Tomar drawn by the lines of a spiral tunnel, the handle dev-S-t cut out of them, and a stick figure standing on a cliff edge above the title AI Solutions Engineer. The human-in-loop.dev mark sits in the top left.',
     body

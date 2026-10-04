@@ -66,10 +66,16 @@ function panel({ w, h, bg, title, desc, body, style = '', rx = 18, corners = 'no
     `<g clip-path="url(#panel)"><rect width="${w}" height="${h}" fill="${bg}"/>${body}</g></svg>\n`;
 }
 
-// the site's seams between sections (SEAM in its lines.js)
-// rule: a run of parallel rules of mixed weight across the top of a section
-const RULES = [[3, 2.6], [8, 0.8], [12, 0.8], [17.5, 1.6], [24, 0.6], [30, 0.6]];
-const ruleSeam = (w, fg, y0 = 0) => `<g fill="${fg}">` + RULES.map(([y, t]) => `<rect x="0" y="${(y0 + y - t / 2).toFixed(2)}" width="${w}" height="${t}"/>`).join('') + '</g>';
-const RULE_H = 36;
+// Section changes are tears: a strip of torn paper in the colour of the lines, frayed like the underside of the
+// hero's cliff. A tear straddles two panels: tearOut is its upper half at the bottom of one panel, tearIn its lower
+// half at the top of the next, and both are solid where the panels meet, so the join never shows.
+const N = require('./noise.cjs');
+const tearEdge = (w, seed) => { const p = []; for (let x = 0; x <= w; x += 3) p.push([x, 3.5 * N.sn(x / 37, seed) + 2 * N.sn(x / 11, seed + 1.7) + 0.8 * N.sn(x / 4.1, seed + 3.3)]); return p; };
+const tearIn = (w, depth, fg, seed) => `<path d="M0 0L${tearEdge(w, seed).map(([x, y]) => x + ' ' + (depth + y).toFixed(1)).join('L')}L${w} 0Z" fill="${fg}"/>`;
+const tearOut = (w, h, depth, fg, seed) => `<path d="M0 ${h}L${tearEdge(w, seed).map(([x, y]) => x + ' ' + (h - depth + y).toFixed(1)).join('L')}L${w} ${h}Z" fill="${fg}"/>`;
+const TEAR = 22;  // the room a panel gives its half of a tear
 
-module.exports = { PAPER, INK, theme, pathData, clipLines, smooth, esc, panel, r1, ruleSeam, RULE_H };
+// every moving panel stops for readers who ask for less motion
+const CALM = '@media (prefers-reduced-motion:reduce){*{animation:none!important}}';
+
+module.exports = { PAPER, INK, theme, pathData, clipLines, smooth, esc, panel, r1, tearIn, tearOut, TEAR, CALM };
