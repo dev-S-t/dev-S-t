@@ -130,7 +130,7 @@ function build(mode) {
     `<path d="${cliff}" fill="${fg}"/>` + figure(fx, fy, fsize, fg) + `<defs>${T.defs()}</defs>` + ident +
     lockup(PAD, 30, 30, fg, bg);
   return S.panel({
-    w: W, h: H, bg,
+    w: W, h: H, bg, corners: 'top',
     title: 'Sahil Tomar (dev-S-t), AI Solutions Engineer',
     desc: 'The name Sahil Tomar drawn by the lines of a spiral tunnel, the handle dev-S-t cut out of them, and a stick figure standing on a cliff edge above the title AI Solutions Engineer. The human-in-loop.dev mark sits in the top left.',
     body

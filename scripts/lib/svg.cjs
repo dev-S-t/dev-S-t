@@ -54,13 +54,22 @@ function smooth(pl, n = 2, closed = false) {
 }
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
-// a panel: rounded corners, its own ground colour, a title and description for screen readers
-function panel({ w, h, bg, title, desc, body, style = '', rx = 18 }) {
+// a panel: its own ground colour, a title and description for screen readers. The README stacks the panels into
+// one canvas, so only its outer corners are round: corners 'top' (the first panel), 'bottom' (the last) or 'none'.
+function panel({ w, h, bg, title, desc, body, style = '', rx = 18, corners = 'none' }) {
+  const t = corners === 'top' || corners === 'all' ? rx : 0, b = corners === 'bottom' || corners === 'all' ? rx : 0;
+  const shape = `M0 ${t}A${t} ${t} 0 0 1 ${t} 0H${w - t}A${t} ${t} 0 0 1 ${w} ${t}V${h - b}A${b} ${b} 0 0 1 ${w - b} ${h}H${b}A${b} ${b} 0 0 1 0 ${h - b}Z`;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-labelledby="t d">` +
     `<title id="t">${esc(title)}</title><desc id="d">${esc(desc)}</desc>` +
     (style ? `<style>${style}</style>` : '') +
-    `<defs><clipPath id="panel"><rect width="${w}" height="${h}" rx="${rx}"/></clipPath></defs>` +
+    `<defs><clipPath id="panel"><path d="${shape}"/></clipPath></defs>` +
     `<g clip-path="url(#panel)"><rect width="${w}" height="${h}" fill="${bg}"/>${body}</g></svg>\n`;
 }
 
-module.exports = { PAPER, INK, theme, pathData, clipLines, smooth, esc, panel, r1 };
+// the site's seams between sections (SEAM in its lines.js)
+// rule: a run of parallel rules of mixed weight across the top of a section
+const RULES = [[3, 2.6], [8, 0.8], [12, 0.8], [17.5, 1.6], [24, 0.6], [30, 0.6]];
+const ruleSeam = (w, fg, y0 = 0) => `<g fill="${fg}">` + RULES.map(([y, t]) => `<rect x="0" y="${(y0 + y - t / 2).toFixed(2)}" width="${w}" height="${t}"/>`).join('') + '</g>';
+const RULE_H = 36;
+
+module.exports = { PAPER, INK, theme, pathData, clipLines, smooth, esc, panel, r1, ruleSeam, RULE_H };

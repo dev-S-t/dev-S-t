@@ -20,7 +20,7 @@ const TS = 27, SS = 15.5, NS = 58, PADX = 26, PADY = 20, GAPN = 20, M = 16;
 
 function plan() {
   const items = []; let y = 0;
-  const head = { h: 140, plate: { x: 26, y: 24, w: 0, h: 92, r: 22 } };
+  const head = { h: 140 + S.RULE_H, plate: { x: 26, y: 24 + S.RULE_H, w: 0, h: 92, r: 22 } };
   head.plate.w = 28 + F.width('head', 'Case Studies', 60, -0.012) + 28;
   head.top = 0; y = head.h;
   STUDIES.forEach(([title, sub, slug], i) => {
@@ -42,6 +42,9 @@ async function files() {
   const P = plan();
   const plates = [P.head.plate, ...P.items.map((it) => it.plate)];
   const peaks = plates.map((b) => ({ box: b, lift: 0.42, reach: 48 }));
+  peaks.push({ box: { x: -20, y: -40, w: W + 40, h: 40 + S.RULE_H, r: 0 }, lift: 0, reach: 10 }); // the rule seam
+  const last = P.items[P.items.length - 1];
+  peaks.push({ box: { x: -20, y: last.top + last.h - 14, w: W + 40, h: 80, r: 0 }, lift: 0, reach: 10 }); // the lines thin out before the wave below
   const field = (x, y) => 0.9 * N.fbm(x / 300 + 3.3, y / 300 - 1.7, 1.2);
   const width = (k, x, y) => (k % 4 === 0 ? 1.3 : 0.7) * N.mix(0.7, 1.35, N.smoothstep(-0.5, 0.6, N.sn(x / 280, y / 280 + 4)));
   const out = {};
@@ -58,7 +61,7 @@ async function files() {
 
   for (const mode of ['light', 'dark']) {
     const hd = strip(mode, 0, P.head.h, P.head.plate, (T, p) => T.use('head', 'Case Studies', p.x + 28, p.y + 66, 60, { ls: -0.012 }));
-    out['cases-light'.replace('light', mode)] = S.panel({ w: W, h: P.head.h, bg: hd.bg, title: 'Case Studies', desc: 'The heading of the case studies, on a contour map. Links to human-in-loop.dev/case-studies/.', body: hd.body });
+    out['cases-light'.replace('light', mode)] = S.panel({ w: W, h: P.head.h, bg: hd.bg, title: 'Case Studies', desc: 'The heading of the case studies, on a contour map. Links to human-in-loop.dev/case-studies/.', body: hd.body + S.ruleSeam(W, hd.fg) });
     for (const it of P.items) {
       const st = strip(mode, it.top, it.h, it.plate, (T, p) => {
         let s = T.use('num', String(it.i + 1), p.x + PADX - 2, p.y + PADY + NS * 0.74, NS);

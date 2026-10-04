@@ -4,8 +4,8 @@
 const { execSync } = require('child_process');
 const F = require('../lib/fonts.cjs'), N = require('../lib/noise.cjs'), S = require('../lib/svg.cjs'), TR = require('../lib/terrain.cjs');
 
-const W = 900, H = 300, LOGIN = 'dev-S-t';
-const X0 = 46, X1 = 856, Y0 = 128, Y1 = 256;   // the calendar's area
+const W = 900, OY = S.RULE_H, H = 300 + OY, LOGIN = 'dev-S-t';   // OY: the rule seam at the top
+const X0 = 46, X1 = 856, Y0 = 128 + OY, Y1 = 256 + OY;   // the calendar's area
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 async function calendar() {
@@ -42,10 +42,11 @@ async function files() {
   // the heading plate: the year's total as a striped numeral, and what it counts
   const total = String(cal.totalContributions), numSize = 66;
   const numW = F.width('num', total, numSize), lw = Math.max(F.width('data', 'contributions', 14, 0.02), F.width('data', 'in the last year', 14, 0.02));
-  const plate = { x: 26, y: 24, w: 28 + numW + 18 + lw + 28, h: 92, r: 22 };
-  const strip = { x: -20, y: 268, w: W + 40, h: 60, r: 0 };
+  const plate = { x: 26, y: 24 + OY, w: 28 + numW + 18 + lw + 28, h: 92, r: 22 };
+  const strip = { x: -20, y: 268 + OY, w: W + 40, h: 60, r: 0 };
+  const seam = { x: -20, y: -40, w: W + 40, h: 40 + OY, r: 0 };
   const summit = top ? { x: top.x - 13, y: top.y - 34, w: 26, h: 36, r: 10 } : null;
-  const peaks = [{ box: plate, lift: 0.18, reach: 40 }, { box: strip, lift: 0, reach: 10 }].concat(summit ? [{ box: summit, lift: 0, reach: 10 }] : []);
+  const peaks = [{ box: plate, lift: 0.18, reach: 40 }, { box: strip, lift: 0, reach: 10 }, { box: seam, lift: 0, reach: 10 }].concat(summit ? [{ box: summit, lift: 0, reach: 10 }] : []);
   const sx = cw * 1.05, sy = rh * 0.95;
   const field = (x, y) => {
     let v = 0.24 * N.fbm(x / 250, y / 250, 4.4);
@@ -67,7 +68,7 @@ async function files() {
       months.map(([m, x]) => T.use('data', m, x, strip.y + 20, 12, { ls: 0.04 })).join('');
     const body = `<g fill="none" stroke="${fg}" stroke-linecap="round" stroke-linejoin="round">${lines}</g>` +
       `<rect x="${plate.x}" y="${plate.y}" width="${plate.w.toFixed(1)}" height="${plate.h}" rx="${plate.r}" fill="${bg}"/>` +
-      `<rect x="0" y="${strip.y}" width="${W}" height="${H - strip.y}" fill="${bg}"/>` +
+      `<rect x="0" y="${strip.y}" width="${W}" height="${H - strip.y}" fill="${bg}"/>` + S.ruleSeam(W, fg) +
       `<defs>${T.defs()}</defs><g fill="${fg}">${text}</g>` +
       (top ? figure(top.x, top.y, 30, fg) : '');
     const busiest = top ? ` The busiest day was ${top.date}, with ${top.contributionCount}.` : '';

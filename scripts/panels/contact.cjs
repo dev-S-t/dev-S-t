@@ -4,7 +4,7 @@
 // image so each can link.
 const F = require('../lib/fonts.cjs'), N = require('../lib/noise.cjs'), S = require('../lib/svg.cjs'), IC = require('../lib/icons.cjs');
 
-const W = 900, H = 330, HZ = 196;
+const W = 900, SH = 330, OY = 30, H = SH + OY, HZ = 196;   // SH: the night scene; OY: the wave seam above it
 const MOON = { x: 58, y: 134, r: 60 };
 const { PAPER, INK } = S;
 
@@ -17,7 +17,7 @@ function code128(txt) {
   return 'Ì' + txt + ch(v) + 'Î';
 }
 
-function scene() {
+function scene(mode) {
   const T = F.glyphs();
   const css = `.tw{animation:tw 4.3s ease-in-out infinite alternate}.tw.b{animation-duration:3.1s;animation-delay:-1.2s}.tw.c{animation-duration:5.7s;animation-delay:-2.9s}` +
     `@keyframes tw{from{opacity:.25}to{opacity:1}}.sh{animation:sh 3.4s ease-in-out infinite alternate}@keyframes sh{from{transform:translateX(-2.5px)}to{transform:translateX(2.5px)}}` +
@@ -46,7 +46,7 @@ function scene() {
   // the water: lines that spread out as they come closer, rocking a little; under the moon they catch the light
   let water = '', glint = '';
   for (let k = 0; ; k++) {
-    const y = HZ + 3 + 1.18 * Math.pow(k, 1.52); if (y > H + 4) break;
+    const y = HZ + 3 + 1.18 * Math.pow(k, 1.52); if (y > SH + 4) break;
     const amp = 0.3 + 0.17 * k, wl = 70 + 9 * k, pts = [];
     for (let x = -10; x <= W + 10; x += 6) pts.push([x, y + amp * N.sn(x / wl, k * 1.37) + 0.4 * amp * N.sn(x / (wl * 0.37), k * 2.1 + 4)]);
     water += `<path d="${S.pathData([pts])}" stroke-width="${(0.45 + 0.05 * k).toFixed(2)}" stroke-opacity="${(0.5 + 0.35 * N.hash(k, 3)).toFixed(2)}"/>`;
@@ -66,7 +66,7 @@ function scene() {
   }
 
   // the heading on the water, on a plate of the night's own colour
-  const hs = 50, hw = F.width('head', 'Contact', hs, -0.012), plate = { x: 26, y: H - 100, w: hw + 56, h: 76 };
+  const hs = 50, hw = F.width('head', 'Contact', hs, -0.012), plate = { x: 26, y: SH - 100, w: hw + 56, h: 76 };
   const heading = T.use('head', 'Contact', plate.x + 28, plate.y + 54, hs, { ls: -0.012 });
   const body =
     `<defs><clipPath id="sky"><rect width="${W}" height="${HZ}"/></clipPath><path id="bars" d="${barsD}"/>${clips}</defs>` +
@@ -78,8 +78,12 @@ function scene() {
     `<g fill="none" stroke="${PAPER}" stroke-linecap="round">${water}${glint}</g>` +
     `<rect x="${plate.x}" y="${plate.y}" width="${plate.w.toFixed(1)}" height="${plate.h}" rx="22" fill="${INK}"/>` +
     `<defs>${T.defs()}</defs><g fill="${PAPER}">${label}${heading}</g>`;
-  return S.panel({ w: W, h: H, bg: INK, title: 'Contact', style: css,
-    desc: 'A night sea: a moon with rings setting on the horizon, stars, and the address human-in-loop.dev written as a barcode with its reflection in the water. Links to human-in-loop.dev/contact/.', body });
+  // the wave: the ground of the section above (paper or ink by theme) ends in a wave over the night
+  const ground = S.theme(mode).bg, wave = []; for (let x = 0; x <= W; x += 4) wave.push([x, 16 + 6 * Math.sin(x / 62 + 0.8) + 3 * N.sn(x / 29, 5.5)]);
+  const shore = 'M' + wave.map(([x, y]) => x + ' ' + y.toFixed(1)).join('L');
+  const seam = `<path d="M0 0L${shore.slice(1)}L${W} 0Z" fill="${ground}"/>` + (mode === 'dark' ? `<path d="${shore}" fill="none" stroke="${PAPER}" stroke-width="1.2"/>` : '');
+  return S.panel({ w: W, h: H, bg: INK, title: 'Contact', style: css, corners: 'bottom',
+    desc: 'A night sea: a moon with rings setting on the horizon, stars, and the address human-in-loop.dev written as a barcode with its reflection in the water. Links to human-in-loop.dev/contact/.', body: `<g transform="translate(0 ${OY})">${body}</g>` + seam });
 }
 
 // a pill: a mark drawn in lines, the label in the data face, the link in the text face, underlined
@@ -100,7 +104,7 @@ const PILLS = [
 ];
 
 async function files() {
-  const out = { contact: scene() };
+  const out = { 'contact-light': scene('light'), 'contact-dark': scene('dark') };
   for (const [slug, label, value] of PILLS) out['pill-' + slug] = await pill(slug, label, value);
   return out;
 }
